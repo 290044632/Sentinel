@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 import com.alibaba.csp.sentinel.dashboard.condition.JsonDataTypeCondition;
+import com.alibaba.csp.sentinel.dashboard.datasource.entity.gateway.ApiDefinitionEntity;
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.gateway.GatewayFlowRuleEntity;
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.FlowRuleEntity;
 import com.alibaba.csp.sentinel.datasource.Converter;
@@ -34,6 +35,15 @@ public class JsonDataTypeConverterAutoConfiguration {
 	@Bean
 	public Converter<String, List<GatewayFlowRuleEntity>> gatewayFlowRuleEntityDecoder() {
 		return s -> JSON.parseArray(s, GatewayFlowRuleEntity.class);
+	}
+	@Bean
+	public Converter<List<ApiDefinitionEntity>, String> apiDefinitionEntityEncoder() {
+		return JSON::toJSONString;
+	}
+	
+	@Bean
+	public Converter<String, List<ApiDefinitionEntity>> apiDefinitionEntityDecoder() {
+		return s -> JSON.parseArray(s, ApiDefinitionEntity.class);
 	}
 
 }
