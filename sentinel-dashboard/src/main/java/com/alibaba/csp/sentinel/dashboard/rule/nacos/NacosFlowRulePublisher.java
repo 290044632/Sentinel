@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.csp.sentinel.dashboard.config.DashboardDataSourceConfig;
 import com.alibaba.csp.sentinel.dashboard.config.NacosDataSourceProperties;
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.FlowRuleEntity;
-import com.alibaba.csp.sentinel.dashboard.rule.FlowRuleDynamicRulePublisher;
+import com.alibaba.csp.sentinel.dashboard.rule.FlowRulePublisher;
 import com.alibaba.csp.sentinel.datasource.Converter;
 import com.alibaba.nacos.api.config.ConfigService;
 
-public class NacosFlowRulePublisher implements FlowRuleDynamicRulePublisher {
+public class NacosFlowRulePublisher implements FlowRulePublisher {
 
 	@Autowired
 	private ConfigService configService;

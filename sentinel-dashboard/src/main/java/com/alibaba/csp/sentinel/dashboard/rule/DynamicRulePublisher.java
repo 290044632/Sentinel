@@ -29,4 +29,8 @@ public interface DynamicRulePublisher<T> {
      * @throws Exception if some error occurs
      */
     void publish(String app, T rules) throws Exception;
+    
+    default boolean publish(String app, String ip, Integer port, T rules)throws Exception{
+    	return false;
+    }
 }

@@ -18,6 +18,31 @@ import com.alibaba.nacos.api.config.ConfigService;
 public class NacosDataSourceAutoConfiguration {
 
 	@Bean
+	public NacosFlowRuleProvider nacosFlowRuleProvider() {
+		return new NacosFlowRuleProvider();
+	}
+
+	@Bean
+	public NacosFlowRulePublisher nacosFlowRulePublisher() {
+		return new NacosFlowRulePublisher();
+	}
+
+	@Bean
+	public NacosGatewayFlowRuleProvider nacosGatewayFlowRuleProvider() {
+		return new NacosGatewayFlowRuleProvider();
+	}
+
+	@Bean
+	public NacosGatewayFlowRulePublisher nacosGatewayFlowRulePublisher() {
+		return new NacosGatewayFlowRulePublisher();
+	}
+	
+	@Bean
+	public NacosClientProxy  nacosClientProxy() {
+		return new NacosClientProxy();
+	}
+
+	@Bean
 	public ConfigService nacosConfigService(DashboardDataSourceConfig dataSourceConfig) throws Exception {
 		NacosDataSourceProperties nacos = dataSourceConfig.getNacos();
 		Properties properties = new Properties();
@@ -49,13 +74,4 @@ public class NacosDataSourceAutoConfiguration {
 		return ConfigFactory.createConfigService(properties);
 	}
 
-	@Bean
-	public NacosFlowRuleProvider nacosFlowRuleProvider() {
-		return new NacosFlowRuleProvider();
-	}
-
-	@Bean
-	public NacosFlowRulePublisher nacosFlowRulePublisher() {
-		return new NacosFlowRulePublisher();
-	}
 }
