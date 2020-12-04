@@ -18,23 +18,23 @@ import com.alibaba.nacos.api.config.ConfigService;
 public class NacosDataSourceAutoConfiguration {
 
 	@Bean
-	public NacosFlowRuleProvider nacosFlowRuleProvider() {
-		return new NacosFlowRuleProvider();
+	public FlowRuleNacosProvider nacosFlowRuleProvider() {
+		return new FlowRuleNacosProvider();
 	}
 
 	@Bean
-	public NacosFlowRulePublisher nacosFlowRulePublisher() {
-		return new NacosFlowRulePublisher();
+	public FlowRuleNacosPublisher nacosFlowRulePublisher() {
+		return new FlowRuleNacosPublisher();
 	}
 
 	@Bean
-	public NacosGatewayFlowRuleProvider nacosGatewayFlowRuleProvider() {
-		return new NacosGatewayFlowRuleProvider();
+	public GatewayFlowRuleNacosProvider nacosGatewayFlowRuleProvider() {
+		return new GatewayFlowRuleNacosProvider();
 	}
 
 	@Bean
-	public NacosGatewayFlowRulePublisher nacosGatewayFlowRulePublisher() {
-		return new NacosGatewayFlowRulePublisher();
+	public GatewayFlowRuleNacosPublisher nacosGatewayFlowRulePublisher() {
+		return new GatewayFlowRuleNacosPublisher();
 	}
 	
 	@Bean

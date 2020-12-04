@@ -13,7 +13,7 @@ import com.alibaba.csp.sentinel.datasource.Converter;
 import com.alibaba.csp.sentinel.util.StringUtil;
 import com.alibaba.nacos.api.config.ConfigService;
 
-public class NacosFlowRuleProvider implements FlowRuleProvider {
+public class FlowRuleNacosProvider implements FlowRuleProvider {
 	@Autowired
 	private ConfigService configService;
 

@@ -8,7 +8,7 @@ import com.alibaba.csp.sentinel.dashboard.datasource.entity.gateway.GatewayFlowR
 import com.alibaba.csp.sentinel.dashboard.rule.GatewayFlowRulePublisher;
 import com.alibaba.csp.sentinel.datasource.Converter;
 
-public class NacosGatewayFlowRulePublisher implements GatewayFlowRulePublisher {
+public class GatewayFlowRuleNacosPublisher implements GatewayFlowRulePublisher {
 
 	@Autowired
 	private NacosClientProxy nacosClientProxy;

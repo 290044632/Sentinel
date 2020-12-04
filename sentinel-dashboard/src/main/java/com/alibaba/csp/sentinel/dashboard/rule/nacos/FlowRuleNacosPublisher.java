@@ -11,7 +11,7 @@ import com.alibaba.csp.sentinel.dashboard.rule.FlowRulePublisher;
 import com.alibaba.csp.sentinel.datasource.Converter;
 import com.alibaba.nacos.api.config.ConfigService;
 
-public class NacosFlowRulePublisher implements FlowRulePublisher {
+public class FlowRuleNacosPublisher implements FlowRulePublisher {
 
 	@Autowired
 	private ConfigService configService;
