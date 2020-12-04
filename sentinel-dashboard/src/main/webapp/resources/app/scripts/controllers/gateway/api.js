@@ -35,7 +35,7 @@ app.controller('GatewayApiCtl', ['$scope', '$stateParams', 'GatewayApiService', 
       var mac = $scope.macInputModel.split(':');
       GatewayApiService.queryApis($scope.app, mac[0], mac[1]).success(
         function (data) {
-          if (data.code == 0 && data.data) {
+          if (data.code === 0 && data.data) {
             // To merge rows for api who has more than one predicateItems, here we build data manually
             $scope.apis = [];
 
@@ -52,7 +52,7 @@ app.controller('GatewayApiCtl', ['$scope', '$stateParams', 'GatewayApiService', 
                 // The itemSize indicates how many rows to merge, by using rowspan="{{api.itemSize}}" in <td> tag
                 newItem["itemSize"] = api["predicateItems"].length;
                 // Mark the flag of first item to zero, indicates the start row to merge
-                newItem["firstFlag"] = index == 0 ? 0 : 1;
+                newItem["firstFlag"] = index === 0 ? 0 : 1;
                 // Still hold the data of predicateItems, in order to bind data in edit dialog html
                 newItem["predicateItems"] = api["predicateItems"];
                 $scope.apis.push(newItem);
@@ -129,7 +129,7 @@ app.controller('GatewayApiCtl', ['$scope', '$stateParams', 'GatewayApiService', 
 
     function addNewApi(api) {
       GatewayApiService.newApi(api).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getApis();
           gatewayApiDialog.close();
         } else {
@@ -140,7 +140,7 @@ app.controller('GatewayApiCtl', ['$scope', '$stateParams', 'GatewayApiService', 
 
     function saveApi(api, edit) {
       GatewayApiService.saveApi(api).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getApis();
           if (edit) {
             gatewayApiDialog.close();
@@ -171,7 +171,7 @@ app.controller('GatewayApiCtl', ['$scope', '$stateParams', 'GatewayApiService', 
     };
 
     $scope.confirm = function () {
-      if ($scope.confirmDialog.type == 'delete_api') {
+      if ($scope.confirmDialog.type === 'delete_api') {
         deleteApi($scope.currentApi);
       } else {
         console.error('error');
@@ -180,7 +180,7 @@ app.controller('GatewayApiCtl', ['$scope', '$stateParams', 'GatewayApiService', 
 
     function deleteApi(api) {
       GatewayApiService.deleteApi(api).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getApis();
           confirmDialog.close();
         } else {
@@ -191,7 +191,7 @@ app.controller('GatewayApiCtl', ['$scope', '$stateParams', 'GatewayApiService', 
 
     $scope.addNewMatchPattern = function() {
       var total;
-      if ($scope.currentApi.predicateItems == null) {
+      if ($scope.currentApi.predicateItems === null) {
         $scope.currentApi.predicateItems = [];
         total = 0;
       } else {
@@ -213,7 +213,7 @@ app.controller('GatewayApiCtl', ['$scope', '$stateParams', 'GatewayApiService', 
     function queryAppMachines() {
       MachineService.getAppMachines($scope.app).success(
         function (data) {
-          if (data.code == 0) {
+          if (data.code === 0) {
             // $scope.machines = data.data;
             if (data.data) {
               $scope.machines = [];

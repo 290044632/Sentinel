@@ -27,6 +27,8 @@ import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.FlowRuleEntity;
 import com.alibaba.csp.sentinel.dashboard.repository.rule.InMemoryRuleRepositoryAdapter;
 import com.alibaba.csp.sentinel.dashboard.rule.DynamicRuleProvider;
 import com.alibaba.csp.sentinel.dashboard.rule.DynamicRulePublisher;
+import com.alibaba.csp.sentinel.dashboard.rule.FlowRuleDynamicRuleProvider;
+import com.alibaba.csp.sentinel.dashboard.rule.FlowRuleDynamicRulePublisher;
 import com.alibaba.csp.sentinel.dashboard.domain.Result;
 
 import org.slf4j.Logger;
@@ -59,11 +61,9 @@ public class FlowControllerV2 {
     private InMemoryRuleRepositoryAdapter<FlowRuleEntity> repository;
 
     @Autowired
-    @Qualifier("flowRuleDefaultProvider")
-    private DynamicRuleProvider<List<FlowRuleEntity>> ruleProvider;
+    private FlowRuleDynamicRuleProvider ruleProvider;
     @Autowired
-    @Qualifier("flowRuleDefaultPublisher")
-    private DynamicRulePublisher<List<FlowRuleEntity>> rulePublisher;
+    private FlowRuleDynamicRulePublisher rulePublisher;
 
     @GetMapping("/rules")
     @AuthAction(PrivilegeType.READ_RULE)

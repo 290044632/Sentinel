@@ -61,15 +61,15 @@ app.service('DegradeService', ['$http', function ($http) {
           alert('降级阈值不能为空或小于 0');
           return false;
       }
-      if (rule.timeWindow == undefined || rule.timeWindow === '' || rule.timeWindow <= 0) {
+      if (rule.timeWindow === undefined || rule.timeWindow === '' || rule.timeWindow <= 0) {
           alert('熔断时长必须大于 0s');
           return false;
       }
-      if (rule.minRequestAmount == undefined || rule.minRequestAmount <= 0) {
+      if (rule.minRequestAmount === undefined || rule.minRequestAmount <= 0) {
           alert('最小请求数目需大于 0');
           return false;
       }
-      if (rule.statIntervalMs == undefined || rule.statIntervalMs <= 0) {
+      if (rule.statIntervalMs === undefined || rule.statIntervalMs <= 0) {
           alert('统计窗口时长需大于 0s');
           return false;
       }
@@ -78,12 +78,12 @@ app.service('DegradeService', ['$http', function ($http) {
           return false;
       }
       // 异常比率类型.
-      if (rule.grade == 1 && rule.count > 1) {
+      if (rule.grade === 1 && rule.count > 1) {
           alert('异常比率超出范围：[0.0 - 1.0]');
           return false;
       }
-      if (rule.grade == 0) {
-          if (rule.slowRatioThreshold == undefined) {
+      if (rule.grade === 0) {
+          if (rule.slowRatioThreshold === undefined) {
               alert('慢调用比率不能为空');
               return false;
           }

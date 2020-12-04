@@ -24,7 +24,7 @@ app.controller('MachineCtl', ['$scope', '$stateParams', 'MachineService',
       MachineService.getAppMachines($scope.app).success(
         function (data) {
           // console.log('get machines: ' + data.data[0].hostname)
-          if (data.code == 0 && data.data) {
+          if (data.code === 0 && data.data) {
             $scope.machines = data.data;
             var healthy = 0;
             $scope.machines.forEach(function (item) {
@@ -51,7 +51,7 @@ app.controller('MachineCtl', ['$scope', '$stateParams', 'MachineService',
       }
       MachineService.removeAppMachine($scope.app, ip, port).success(
         function(data) {
-          if (data.code == 0) {
+          if (data.code === 0) {
             $scope.reloadMachines();
           } else {
             alert("remove failed");

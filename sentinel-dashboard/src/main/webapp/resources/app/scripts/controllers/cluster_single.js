@@ -56,7 +56,7 @@ app.controller('SentinelClusterSingleController', ['$scope', '$stateParams', 'ng
             }
             let mac = $scope.macInputModel.split(':');
             ClusterStateService.fetchClusterUniversalStateSingle($scope.app, mac[0], mac[1]).success(function (data) {
-                if (data.code == 0 && data.data) {
+                if (data.code === 0 && data.data) {
                     $scope.loadError = undefined;
                     $scope.stateVO = data.data;
                     $scope.stateVO.currentMode = $scope.stateVO.stateInfo.mode;
@@ -84,7 +84,7 @@ app.controller('SentinelClusterSingleController', ['$scope', '$stateParams', 'ng
                 return false;
             }
             let config = stateVO.client.clientConfig;
-            if (!config.serverHost || config.serverHost.trim() == '') {
+            if (!config.serverHost || config.serverHost.trim() === '') {
                 alert('请输入有效的 Token Server IP');
                 return false;
             }
@@ -115,7 +115,7 @@ app.controller('SentinelClusterSingleController', ['$scope', '$stateParams', 'ng
             request.mode = CLUSTER_MODE_CLIENT;
             request.clientConfig = stateVO.client.clientConfig;
             ClusterStateService.modifyClusterConfig(request).success(function (data) {
-                if (data.code == 0 && data.data) {
+                if (data.code === 0 && data.data) {
                     alert('修改集群限流客户端配置成功');
                     window.location.reload();
                 } else {
@@ -135,7 +135,7 @@ app.controller('SentinelClusterSingleController', ['$scope', '$stateParams', 'ng
                 alert('不合法的配置');
                 return false;
             }
-            if (stateVO.server.namespaceSetStr === undefined || stateVO.server.namespaceSetStr == '') {
+            if (stateVO.server.namespaceSetStr === undefined || stateVO.server.namespaceSetStr === '') {
                 alert('请输入有效的命名空间集合（多个 namespace 以 , 分隔）');
                 return false;
             }
@@ -174,7 +174,7 @@ app.controller('SentinelClusterSingleController', ['$scope', '$stateParams', 'ng
             request.transportConfig = stateVO.server.transport;
             request.namespaceSet = convertStrToNamespaceSet(stateVO.server.namespaceSetStr);
             ClusterStateService.modifyClusterConfig(request).success(function (data) {
-                if (data.code == 0 && data.data) {
+                if (data.code === 0 && data.data) {
                     alert('修改集群限流服务端配置成功');
                     window.location.reload();
                 } else {
@@ -196,11 +196,11 @@ app.controller('SentinelClusterSingleController', ['$scope', '$stateParams', 'ng
                 return;
             }
             let mode = $scope.stateVO.stateInfo.mode;
-            if (mode != 1 && mode != 0) {
+            if (mode !== 1 && mode !== 0) {
                 alert('未知的集群限流模式');
                 return;
             }
-            if (mode == 0) {
+            if (mode === 0) {
                 sendClusterClientRequest($scope.stateVO);
             } else {
                 sendClusterServerRequest($scope.stateVO);

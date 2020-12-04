@@ -60,7 +60,7 @@ app.controller('MetricCtl', ['$scope', '$stateParams', 'MetricService', '$interv
     });
     $scope.initAllChart = function () {
       $.each($scope.metrics, function (idx, metric) {
-        if (idx == $scope.metrics.length - 1) {
+        if (idx === $scope.metrics.length - 1) {
           return;
         }
         const chart = new G2.Chart({
@@ -214,7 +214,7 @@ app.controller('MetricCtl', ['$scope', '$stateParams', 'MetricService', '$interv
       });
     };
     function fillZeros(metricData) {
-      if (!metricData || metricData.length == 0) {
+      if (!metricData || metricData.length === 0) {
         return [];
       }
       var filledData = [];

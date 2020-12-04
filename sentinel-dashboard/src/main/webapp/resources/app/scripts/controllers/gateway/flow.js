@@ -35,7 +35,7 @@ app.controller('GatewayFlowCtl', ['$scope', '$stateParams', 'GatewayFlowService'
       var mac = $scope.macInputModel.split(':');
       GatewayFlowService.queryRules($scope.app, mac[0], mac[1]).success(
         function (data) {
-          if (data.code == 0 && data.data) {
+          if (data.code === 0 && data.data) {
             $scope.rules = data.data;
             $scope.rulesPageConfig.totalCount = $scope.rules.length;
           } else {
@@ -55,7 +55,7 @@ app.controller('GatewayFlowCtl', ['$scope', '$stateParams', 'GatewayFlowService'
       var mac = $scope.macInputModel.split(':');
       GatewayApiService.queryApis($scope.app, mac[0], mac[1]).success(
         function (data) {
-          if (data.code == 0 && data.data) {
+          if (data.code === 0 && data.data) {
             $scope.apiNames = [];
 
             data.data.forEach(function (api) {
@@ -154,7 +154,7 @@ app.controller('GatewayFlowCtl', ['$scope', '$stateParams', 'GatewayFlowService'
 
     function addNewRule(rule) {
       GatewayFlowService.newRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           gatewayFlowRuleDialog.close();
         } else {
@@ -165,7 +165,7 @@ app.controller('GatewayFlowCtl', ['$scope', '$stateParams', 'GatewayFlowService'
 
     function saveRule(rule, edit) {
       GatewayFlowService.saveRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           if (edit) {
             gatewayFlowRuleDialog.close();
@@ -185,7 +185,7 @@ app.controller('GatewayFlowCtl', ['$scope', '$stateParams', 'GatewayFlowService'
         title: '删除网关流控规则',
         type: 'delete_rule',
         attentionTitle: '请确认是否删除如下规则',
-        attention: 'API名称: ' + rule.resource + ', ' + (rule.grade == 1 ? 'QPS阈值' : '线程数') + ': ' + rule.count,
+        attention: 'API名称: ' + rule.resource + ', ' + (rule.grade === 1 ? 'QPS阈值' : '线程数') + ': ' + rule.count,
         confirmBtnText: '删除',
       };
       confirmDialog = ngDialog.open({
@@ -196,7 +196,7 @@ app.controller('GatewayFlowCtl', ['$scope', '$stateParams', 'GatewayFlowService'
     };
 
     $scope.confirm = function () {
-      if ($scope.confirmDialog.type == 'delete_rule') {
+      if ($scope.confirmDialog.type === 'delete_rule') {
         deleteRule($scope.currentRule);
       } else {
         console.error('error');
@@ -205,7 +205,7 @@ app.controller('GatewayFlowCtl', ['$scope', '$stateParams', 'GatewayFlowService'
 
     function deleteRule(rule) {
       GatewayFlowService.deleteRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           confirmDialog.close();
         } else {
@@ -219,7 +219,7 @@ app.controller('GatewayFlowCtl', ['$scope', '$stateParams', 'GatewayFlowService'
     function queryAppMachines() {
       MachineService.getAppMachines($scope.app).success(
           function (data) {
-            if (data.code == 0) {
+            if (data.code === 0) {
               if (data.data) {
                 $scope.machines = [];
                 $scope.macsInputOptions = [];

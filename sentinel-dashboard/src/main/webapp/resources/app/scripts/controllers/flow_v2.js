@@ -48,7 +48,7 @@ app.controller('FlowControllerV2', ['$scope', '$stateParams', 'FlowServiceV2', '
       var mac = $scope.macInputModel.split(':');
       FlowService.queryMachineRules($scope.app, mac[0], mac[1]).success(
         function (data) {
-          if (data.code == 0 && data.data) {
+          if (data.code === 0 && data.data) {
             $scope.rules = data.data;
             $scope.rulesPageConfig.totalCount = $scope.rules.length;
           } else {
@@ -66,7 +66,7 @@ app.controller('FlowControllerV2', ['$scope', '$stateParams', 'FlowServiceV2', '
         title: '编辑流控规则',
         type: 'edit',
         confirmBtnText: '保存',
-        showAdvanceButton: rule.controlBehavior == 0 && rule.strategy == 0
+        showAdvanceButton: rule.controlBehavior === 0 && rule.strategy === 0
       };
       flowRuleDialog = ngDialog.open({
         template: '/app/views/dialog/flow-rule-dialog.html',
@@ -125,7 +125,7 @@ app.controller('FlowControllerV2', ['$scope', '$stateParams', 'FlowServiceV2', '
         type: 'delete_rule',
         attentionTitle: '请确认是否删除如下流控规则',
         attention: '资源名: ' + rule.resource + ', 流控应用: ' + rule.limitApp
-          + ', 阈值类型: ' + (rule.grade == 0 ? '线程数' : 'QPS') + ', 阈值: ' + rule.count,
+          + ', 阈值类型: ' + (rule.grade === 0 ? '线程数' : 'QPS') + ', 阈值: ' + rule.count,
         confirmBtnText: '删除',
       };
       confirmDialog = ngDialog.open({
@@ -145,7 +145,7 @@ app.controller('FlowControllerV2', ['$scope', '$stateParams', 'FlowServiceV2', '
 
     function deleteRule(rule) {
       FlowService.deleteRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           confirmDialog.close();
         } else {
@@ -156,7 +156,7 @@ app.controller('FlowControllerV2', ['$scope', '$stateParams', 'FlowServiceV2', '
 
     function addNewRule(rule) {
       FlowService.newRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           flowRuleDialog.close();
         } else {
@@ -174,7 +174,7 @@ app.controller('FlowControllerV2', ['$scope', '$stateParams', 'FlowServiceV2', '
 
     function saveRule(rule, edit) {
       FlowService.saveRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           if (edit) {
             flowRuleDialog.close();
@@ -190,7 +190,7 @@ app.controller('FlowControllerV2', ['$scope', '$stateParams', 'FlowServiceV2', '
     function queryAppMachines() {
       MachineService.getAppMachines($scope.app).success(
         function (data) {
-          if (data.code == 0) {
+          if (data.code === 0) {
             // $scope.machines = data.data;
             if (data.data) {
               $scope.machines = [];

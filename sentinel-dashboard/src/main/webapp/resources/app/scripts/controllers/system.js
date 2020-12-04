@@ -108,19 +108,19 @@ app.controller('SystemCtl', ['$scope', '$stateParams', 'SystemService', 'ngDialo
       $scope.currentRule = rule;
       var ruleTypeDesc = '';
       var ruleTypeCount = null;
-      if (rule.highestSystemLoad != -1) {
+      if (rule.highestSystemLoad !== -1) {
         ruleTypeDesc = 'LOAD';
         ruleTypeCount = rule.highestSystemLoad;
-      } else if (rule.avgRt != -1) {
+      } else if (rule.avgRt !== -1) {
         ruleTypeDesc = 'RT';
         ruleTypeCount = rule.avgRt;
-      } else if (rule.maxThread != -1) {
+      } else if (rule.maxThread !== -1) {
         ruleTypeDesc = '线程数';
         ruleTypeCount = rule.maxThread;
-      } else if (rule.qps != -1) {
+      } else if (rule.qps !== -1) {
         ruleTypeDesc = 'QPS';
         ruleTypeCount = rule.qps;
-      }else if (rule.highestCpuUsage != -1) {
+      }else if (rule.highestCpuUsage !== -1) {
           ruleTypeDesc = 'CPU 使用率';
           ruleTypeCount = rule.highestCpuUsage;
       }
@@ -143,15 +143,15 @@ app.controller('SystemCtl', ['$scope', '$stateParams', 'SystemService', 'ngDialo
     $scope.confirm = function () {
       if ($scope.confirmDialog.type === 'delete_rule') {
         deleteRule($scope.currentRule);
-        // } else if ($scope.confirmDialog.type == 'enable_rule') {
+        // } else if ($scope.confirmDialog.type === 'enable_rule') {
         //     $scope.currentRule.enable = true;
         //     saveRule($scope.currentRule);
-        // } else if ($scope.confirmDialog.type == 'disable_rule') {
+        // } else if ($scope.confirmDialog.type === 'disable_rule') {
         //     $scope.currentRule.enable = false;
         //     saveRule($scope.currentRule);
-        // } else if ($scope.confirmDialog.type == 'enable_all') {
+        // } else if ($scope.confirmDialog.type === 'enable_all') {
         //     enableAll($scope.app);
-        // } else if ($scope.confirmDialog.type == 'disable_all') {
+        // } else if ($scope.confirmDialog.type === 'disable_all') {
         //     disableAll($scope.app);
       } else {
         console.error('error');
@@ -163,7 +163,7 @@ app.controller('SystemCtl', ['$scope', '$stateParams', 'SystemService', 'ngDialo
         if (data.code === 0) {
           getMachineRules();
           confirmDialog.close();
-        } else if (data.msg != null) {
+        } else if (data.msg !== null) {
             alert('失败：' + data.msg);
         } else {
             alert('失败：未知错误');
@@ -172,7 +172,7 @@ app.controller('SystemCtl', ['$scope', '$stateParams', 'SystemService', 'ngDialo
     }
 
     function addNewRule(rule) {
-      if (rule.grade == 4 && (rule.highestCpuUsage < 0 || rule.highestCpuUsage > 1)) {
+      if (rule.grade === 4 && (rule.highestCpuUsage < 0 || rule.highestCpuUsage > 1)) {
         alert('CPU 使用率模式的取值范围应为 [0.0, 1.0]，对应 0% - 100%');
         return;
       }
@@ -180,7 +180,7 @@ app.controller('SystemCtl', ['$scope', '$stateParams', 'SystemService', 'ngDialo
         if (data.code === 0) {
           getMachineRules();
           systemRuleDialog.close();
-        } else if (data.msg != null) {
+        } else if (data.msg !== null) {
           alert('失败：' + data.msg);
         } else {
           alert('失败：未知错误');
@@ -197,7 +197,7 @@ app.controller('SystemCtl', ['$scope', '$stateParams', 'SystemService', 'ngDialo
           } else {
             confirmDialog.close();
           }
-        } else if (data.msg != null) {
+        } else if (data.msg !== null) {
           alert('失败：' + data.msg);
         } else {
           alert('失败：未知错误');

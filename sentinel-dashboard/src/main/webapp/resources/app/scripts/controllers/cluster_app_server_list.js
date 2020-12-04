@@ -320,7 +320,7 @@ app.controller('SentinelClusterAppServerListController', ['$scope', '$stateParam
                 return;
             }
             let serverData = $scope.serverAssignDialogData.serverData;
-            let belongToApp = serverData.serverType == 0; // don't modify here!
+            let belongToApp = serverData.serverType === 0; // don't modify here!
             let machineId = serverData.currentServer;
             let request = {
                 clusterMap: {

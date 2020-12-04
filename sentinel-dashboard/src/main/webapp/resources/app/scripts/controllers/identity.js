@@ -445,13 +445,13 @@ app.controller('IdentityCtl', ['$scope', '$stateParams', 'IdentityService',
 
     function queryIdentities() {
       var mac = $scope.macInputModel.split(':');
-      if (mac == null || mac.length < 2) {
+      if (mac === null || mac.length < 2) {
         return;
       }
       if ($scope.isTreeView) {
         IdentityService.fetchIdentityOfMachine(mac[0], mac[1], $scope.searchKey).success(
           function (data) {
-            if (data.code == 0 && data.data) {
+            if (data.code === 0 && data.data) {
               $scope.identities = data.data;
               $scope.totalCount = $scope.identities.length;
             } else {
@@ -463,7 +463,7 @@ app.controller('IdentityCtl', ['$scope', '$stateParams', 'IdentityService',
       } else {
         IdentityService.fetchClusterNodeOfMachine(mac[0], mac[1], $scope.searchKey).success(
           function (data) {
-            if (data.code == 0 && data.data) {
+            if (data.code === 0 && data.data) {
               $scope.identities = data.data;
               $scope.totalCount = $scope.identities.length;
             } else {

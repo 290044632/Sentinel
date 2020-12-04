@@ -39,7 +39,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 			if(!$.isArray(parents)){
 				parents = [parents]
 			}
-			if(parents.length == 0){
+			if(parents.length === 0){
 				tree.push(entry)
 			} else {
 				var inTree = false;
@@ -71,7 +71,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 	
 		var table = $("<table>")
 		$.each(tableAttributes, function(key, value){
-			if(key == 'class' && value != 'jsTT') {
+			if(key === 'class' && value !== 'jsTT') {
 				table.addClass(value)
 			} else {
 				table.attr(key, value)			
@@ -91,7 +91,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 		} else {
 			$(tr).append($('<th>' + idAttr + '</th>'))
 			$.each(tree[0], function(key, value) {
-				if (key != childrenAttr && key != idAttr)
+				if (key !== childrenAttr && key !== idAttr)
 					$(tr).append($('<th>' + key + '</th>'))
 			})
 		}
@@ -100,7 +100,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 			var tr = $("<tr>")
 			$(tr).attr('data-tt-id', node[idAttr])
 			$(tr).attr('data-tt-level', node['data-tt-level'])
-			if(!node[childrenAttr] || node[childrenAttr].length == 0)
+			if(!node[childrenAttr] || node[childrenAttr].length === 0)
 				$(tr).attr('data-tt-isleaf', true)
 			else
 				$(tr).attr('data-tt-isnode', true)
@@ -116,7 +116,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 			} else {
 				$(tr).append($('<td>' + node[idAttr] + '</td>'))
 				$.each(node, function(key, value) {
-					if (key != childrenAttr && key != idAttr && key != 'data-tt-level')
+					if (key !== childrenAttr && key !== idAttr && key !== 'data-tt-level')
 						$(tr).append($('<td>' + value + '</td>'))
 				})
 			}
@@ -157,16 +157,16 @@ var com_github_culmat_jsTreeTable =  (function(){
 				var level = parseInt($(this).attr('data-tt-level'))
 				if (level > n-1) {
 					this.trCollapse(true)
-				} else if (level == n-1){
+				} else if (level === n-1){
 					this.trExpand(true)
 				}
 			})
 		}
 		function getLevel(node){
 			var level = node.attr('data-tt-level')
-			if(level != undefined ) return parseInt(level)
+			if(level !== undefined ) return parseInt(level)
 			var parentID = node.attr('data-tt-parent-id')
-			if( parentID == undefined){
+			if( parentID === undefined){
 				return 0
 			} else {
 				return getLevel($('tr[data-tt-id="'+parentID+'"]', table).first()) + 1
@@ -286,7 +286,7 @@ var com_github_culmat_jsTreeTable =  (function(){
 		appendTreetable : appendTreetable,
 		jsTreeTable : '1.0',
 		register : function(target){
-			$.each(this, function(key, value){ if(key != 'register') target[key] = value})
+			$.each(this, function(key, value){ if(key !== 'register') target[key] = value})
 		}
 	}
 })();

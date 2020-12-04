@@ -48,7 +48,7 @@ app.service('GatewayApiService', ['$http', function ($http) {
       return false;
     }
 
-    if (api.predicateItems == null || api.predicateItems.length === 0) {
+    if (api.predicateItems === null || api.predicateItems.length === 0) {
       // Should never happen since no remove button will display when only one predicateItem.
       alert('至少有一个匹配规则');
       return false;

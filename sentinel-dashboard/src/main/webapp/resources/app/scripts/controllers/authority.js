@@ -150,7 +150,7 @@ angular.module('sentinelDashboardApp').controller('AuthorityRuleController', ['$
                 return;
             }
             AuthorityRuleService.deleteRule(entity).success((data) => {
-                if (data.code == 0) {
+                if (data.code === 0) {
                     getMachineRules();
                     confirmDialog.close();
                 } else {
@@ -196,7 +196,7 @@ angular.module('sentinelDashboardApp').controller('AuthorityRuleController', ['$
         function queryAppMachines() {
             MachineService.getAppMachines($scope.app).success(
                 function (data) {
-                    if (data.code == 0) {
+                    if (data.code === 0) {
                         // $scope.machines = data.data;
                         if (data.data) {
                             $scope.machines = [];

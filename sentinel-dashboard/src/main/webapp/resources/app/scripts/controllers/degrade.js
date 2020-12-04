@@ -32,7 +32,7 @@ app.controller('DegradeCtl', ['$scope', '$stateParams', 'DegradeService', 'ngDia
       var mac = $scope.macInputModel.split(':');
       DegradeService.queryMachineRules($scope.app, mac[0], mac[1]).success(
         function (data) {
-          if (data.code == 0 && data.data) {
+          if (data.code === 0 && data.data) {
             $scope.rules = data.data;
             $scope.rulesPageConfig.totalCount = $scope.rules.length;
           } else {
@@ -126,7 +126,7 @@ app.controller('DegradeCtl', ['$scope', '$stateParams', 'DegradeService', 'ngDia
     };
 
     $scope.confirm = function () {
-      if ($scope.confirmDialog.type == 'delete_rule') {
+      if ($scope.confirmDialog.type === 'delete_rule') {
         deleteRule($scope.currentRule);
       } else {
         console.error('error');
@@ -135,7 +135,7 @@ app.controller('DegradeCtl', ['$scope', '$stateParams', 'DegradeService', 'ngDia
 
     function deleteRule(rule) {
       DegradeService.deleteRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           confirmDialog.close();
         } else {
@@ -146,7 +146,7 @@ app.controller('DegradeCtl', ['$scope', '$stateParams', 'DegradeService', 'ngDia
 
     function addNewRule(rule) {
       DegradeService.newRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           degradeRuleDialog.close();
         } else {
@@ -157,7 +157,7 @@ app.controller('DegradeCtl', ['$scope', '$stateParams', 'DegradeService', 'ngDia
 
     function saveRule(rule, edit) {
       DegradeService.saveRule(rule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           getMachineRules();
           if (edit) {
             degradeRuleDialog.close();
@@ -173,7 +173,7 @@ app.controller('DegradeCtl', ['$scope', '$stateParams', 'DegradeService', 'ngDia
     function queryAppMachines() {
       MachineService.getAppMachines($scope.app).success(
         function (data) {
-          if (data.code == 0) {
+          if (data.code === 0) {
             // $scope.machines = data.data;
             if (data.data) {
               $scope.machines = [];

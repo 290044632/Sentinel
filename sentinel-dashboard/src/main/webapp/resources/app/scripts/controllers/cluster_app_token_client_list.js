@@ -34,7 +34,7 @@ app.controller('SentinelClusterAppTokenClientListController', ['$scope', '$state
         };
 
         function checkValidClientConfig(config) {
-            if (!config.serverHost || config.serverHost.trim() == '') {
+            if (!config.serverHost || config.serverHost.trim() === '') {
                 alert('请输入有效的 Token Server IP');
                 return false;
             }

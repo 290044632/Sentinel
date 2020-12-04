@@ -41,7 +41,7 @@ app.controller('GatewayIdentityCtl', ['$scope', '$stateParams', 'IdentityService
       var mac = $scope.macInputModel.split(':');
       GatewayApiService.queryApis($scope.app, mac[0], mac[1]).success(
         function (data) {
-          if (data.code == 0 && data.data) {
+          if (data.code === 0 && data.data) {
             $scope.apiNames = [];
 
             data.data.forEach(function (api) {
@@ -69,7 +69,7 @@ app.controller('GatewayIdentityCtl', ['$scope', '$stateParams', 'IdentityService
         app: $scope.app,
         ip: mac[0],
         port: mac[1],
-        resourceMode: gatewayFlowRuleDialogScope.apiNames.indexOf(resource) == -1 ? 0 : 1,
+        resourceMode: gatewayFlowRuleDialogScope.apiNames.indexOf(resource) === -1 ? 0 : 1,
         resource: resource,
         interval: 1,
         intervalUnit: 0,
@@ -152,7 +152,7 @@ app.controller('GatewayIdentityCtl', ['$scope', '$stateParams', 'IdentityService
             return;
         }
       GatewayFlowService.newRule(gatewayFlowRuleDialogScope.currentRule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           gatewayFlowRuleDialog.close();
         } else {
           alert('失败!');
@@ -200,7 +200,7 @@ app.controller('GatewayIdentityCtl', ['$scope', '$stateParams', 'IdentityService
             return;
         }
       DegradeService.newRule(degradeRuleDialogScope.currentRule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           degradeRuleDialog.close();
           var url = '/dashboard/degrade/' + $scope.app;
           $location.path(url);
@@ -215,7 +215,7 @@ app.controller('GatewayIdentityCtl', ['$scope', '$stateParams', 'IdentityService
             return;
         }
       DegradeService.newRule(degradeRuleDialogScope.currentRule).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           degradeRuleDialog.close();
         } else {
           alert('失败!');
@@ -279,13 +279,13 @@ app.controller('GatewayIdentityCtl', ['$scope', '$stateParams', 'IdentityService
 
     function queryIdentities() {
       var mac = $scope.macInputModel.split(':');
-      if (mac == null || mac.length < 2) {
+      if (mac === null || mac.length < 2) {
         return;
       }
 
       IdentityService.fetchClusterNodeOfMachine(mac[0], mac[1], $scope.searchKey).success(
         function (data) {
-          if (data.code == 0 && data.data) {
+          if (data.code === 0 && data.data) {
             $scope.identities = data.data;
             $scope.totalCount = $scope.identities.length;
           } else {

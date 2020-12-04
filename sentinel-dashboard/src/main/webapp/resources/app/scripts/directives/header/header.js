@@ -12,14 +12,14 @@ angular.module('sentinelDashboardApp')
       replace: true,
       controller: function ($scope, $state, $window, VersionService, AuthService) {
         VersionService.version().success(function (data) {
-          if (data.code == 0) {
+          if (data.code === 0) {
             $scope.dashboardVersion = data.data;
           }
         });
 
         if (!$window.localStorage.getItem("session_sentinel_admin")) {
           AuthService.check().success(function (data) {
-            if (data.code == 0) {
+            if (data.code === 0) {
               $window.localStorage.setItem('session_sentinel_admin', JSON.stringify(data.data));
               handleLogout($scope, data.data.id)
             } else {
@@ -39,7 +39,7 @@ angular.module('sentinelDashboardApp')
         }
 
         function handleLogout($scope, id) {
-          if (id == 'FAKE_EMP_ID') {
+          if (id === 'FAKE_EMP_ID') {
             $scope.showLogout = false;
           } else {
             $scope.showLogout = true;
@@ -48,7 +48,7 @@ angular.module('sentinelDashboardApp')
 
         $scope.logout = function () {
           AuthService.logout().success(function (data) {
-            if (data.code == 0) {
+            if (data.code === 0) {
               $window.localStorage.removeItem("session_sentinel_admin");
               $state.go('login');
             } else {

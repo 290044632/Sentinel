@@ -21,7 +21,7 @@ app.controller('LoginCtl', ['$scope', '$state', '$window', 'AuthService',
       var param = {"username": $scope.username, "password": $scope.password};
 
       AuthService.login(param).success(function (data) {
-        if (data.code == 0) {
+        if (data.code === 0) {
           $window.localStorage.setItem('session_sentinel_admin', JSON.stringify(data.data));
           $state.go('dashboard');
         } else {
