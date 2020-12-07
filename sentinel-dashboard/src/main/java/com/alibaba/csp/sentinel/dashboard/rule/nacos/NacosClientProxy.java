@@ -37,7 +37,6 @@ public class NacosClientProxy {
 		if (indexOf < 0) {
 			dataType = "." + dataType;
 		}
-		return new StringBuilder(app).append("-").append(ip).append("-").append(port).append(ruleType).append(dataType)
-				.toString();
+		return new StringBuilder(app).append("-").append(ip).append("-").append(port).append(ruleType).toString();
 	}
 }

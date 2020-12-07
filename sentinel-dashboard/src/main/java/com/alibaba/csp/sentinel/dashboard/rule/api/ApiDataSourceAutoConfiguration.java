@@ -43,4 +43,24 @@ public class ApiDataSourceAutoConfiguration {
 	public ApiDefinitionApiPublisher defaultApiDefinitionPublisher() {
 		return new ApiDefinitionApiPublisher();
 	}
+
+	@Bean
+	public DegradeRuleApiProvider defaultDegradeRuleApiProvider() {
+		return new DegradeRuleApiProvider();
+	}
+
+	@Bean
+	public DegradeRuleApiPublisher defaultDegradeRuleApiPublisher() {
+		return new DegradeRuleApiPublisher();
+	}
+
+	@Bean
+	public SystemRuleApiProvider systemRuleApiProvider() {
+		return new SystemRuleApiProvider();
+	}
+
+	@Bean
+	public SystemRuleApiPublisher systemRuleApiPublisher() {
+		return new SystemRuleApiPublisher();
+	}
 }

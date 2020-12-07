@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.gateway.ApiDefinitionEntity;
-import com.alibaba.csp.sentinel.dashboard.rule.ApiDefinitionProvider;
 import com.alibaba.csp.sentinel.dashboard.rule.ApiDefinitionPublisher;
 import com.alibaba.csp.sentinel.datasource.Converter;
 

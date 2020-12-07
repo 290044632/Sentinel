@@ -36,9 +36,39 @@ public class NacosDataSourceAutoConfiguration {
 	public GatewayFlowRuleNacosPublisher nacosGatewayFlowRulePublisher() {
 		return new GatewayFlowRuleNacosPublisher();
 	}
-	
+
 	@Bean
-	public NacosClientProxy  nacosClientProxy() {
+	public ApiDefinitionNacosProvider apiDefinitionNacosProvider() {
+		return new ApiDefinitionNacosProvider();
+	}
+
+	@Bean
+	public ApiDefinitionNacosPublisher apiDefinitionNacosPublisher() {
+		return new ApiDefinitionNacosPublisher();
+	}
+
+	@Bean
+	public DegradeRuleNacosProvider degradeRuleNacosProvider() {
+		return new DegradeRuleNacosProvider();
+	}
+
+	@Bean
+	public DegradeRuleNacosPublisher degradeRuleNacosPublisher() {
+		return new DegradeRuleNacosPublisher();
+	}
+
+	@Bean
+	public SystemRuleNacosProvider systemRuleNacosProvider() {
+		return new SystemRuleNacosProvider();
+	}
+
+	@Bean
+	public SystemRuleNacosPublisher systemRuleNacosPublisher() {
+		return new SystemRuleNacosPublisher();
+	}
+
+	@Bean
+	public NacosClientProxy nacosClientProxy() {
 		return new NacosClientProxy();
 	}
 
