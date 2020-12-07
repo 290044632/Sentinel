@@ -1,5 +1,7 @@
 package com.alibaba.csp.sentinel.dashboard.rule.nacos;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,9 @@ public class ApiDefinitionNacosProvider implements ApiDefinitionProvider {
 	@Override
 	public List<ApiDefinitionEntity> getRules(String app, String ip, Integer port) throws Exception {
 
-		return this.nacosClientProxy.get(app, ip, port, NacosConfigConstant.GATEWAY_API_DATA_ID_POSTFIX, converter);
+		List<ApiDefinitionEntity> rules = this.nacosClientProxy.get(app, ip, port,
+				NacosConfigConstant.GATEWAY_API_DATA_ID_POSTFIX, converter);
+		return null == rules ? Collections.emptyList() : rules;
 	}
 
 }

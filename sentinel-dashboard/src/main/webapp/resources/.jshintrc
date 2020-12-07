@@ -32,10 +32,10 @@
   "indent": 2,
 
   // Prohibit use of a variable before it is defined.
-  "latedef": true,
+  "latedef": false,
 
   // Enforce line length to 100 characters
-  "maxlen": 100,
+  "maxlen": 200,
 
   // Require capitalized names for constructor functions.
   "newcap": true,
@@ -48,10 +48,10 @@
   "strict": false,
 
   // Prohibit use of explicitly undeclared variables.
-  "undef": true,
+  "undef": false,
 
   // Warn when variables are defined but never used.
-  "unused": true,
+  "unused": false,
 
   /*
    * RELAXING OPTIONS
